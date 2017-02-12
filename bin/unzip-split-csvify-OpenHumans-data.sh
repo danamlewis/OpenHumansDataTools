@@ -23,6 +23,7 @@ ls -d [0-9]* | while read dir; do
 
         #json2csv program will convert from json into csv
         cd ${dir}_${type}_parts
+        echo "Creating CSV files..."
         ls *.json | while read file; do
             #read json file and convert to csv
             complex-json2csv $file > ../${file%.json}.csv
