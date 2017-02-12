@@ -16,7 +16,7 @@ ls -d [0-9]* | while read dir; do
 
     for type in profile treatments entries devicestatus; do
         cd $dir/direct-sharing-31/
-        gzip -cd $type.json.gz > ${dir}_$type.json && echo "Extracted ${dir}_$type.json"
+        gzip -cd $type.json.gz > ${dir}_$type.json && echo "Extracted ${dir}_$type.json; splitting it..."
 
         #need to chunk-ify any large files
         jsonsplit ${dir}_$type.json 10000
