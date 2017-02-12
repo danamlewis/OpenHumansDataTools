@@ -26,6 +26,7 @@ ls -d [0-9]* | while read dir; do
         ls *.json | while read file; do
             #read json file and convert to csv
             complex-json2csv $file > ../${file%.json}.csv
+            echo -n "=" > /dev/stderr
         done
         echo
 
