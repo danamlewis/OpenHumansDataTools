@@ -49,3 +49,7 @@ Per the headers for the file provided as an example in this script, if needed, I
 **Mock data in output file along with additional calculations for various variables as defined by a project protocol:**
 
 ![Example output file with mock data and formulas embedded for calculating these other fields](https://github.com/danamlewis/OpenHumansDataTools/blob/master/Examples/Example%20output%20file%20from%20unzip-merge-output.png)
+
+## Tool #3: Examples and descriptions of the four data file types from Nightscout
+
+[NS-data-types.md](https://github.com/danamlewis/OpenHumansDataTools/blob/master/NS-data-types.md) attemps to explain the nuances and what is contained in each of the four data file types: profile, entries, device status, and treatments. 
