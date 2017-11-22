@@ -22,7 +22,7 @@ ls -d [0-9]* | while read dir; do
 
     #unzip the relevant json file and re-name it with the directory name as a json
     type=entries
-    ls ${type}_*.gz | sed "s/.gz//" | while read file; do
+    ls ${type}*.gz | sed "s/.gz//" | while read file; do
         gzip -cd ${file} > ${dir}_${file}
         #gzip -cd entries.json.gz > ${dir}_entries.json
 
@@ -32,10 +32,14 @@ ls -d [0-9]* | while read dir; do
         mkdir -p ${dir}_${file}_csv
 
         # pipe the json into csv, taking the dateString and sgv datums
-        cat ${dir}_${file} | jsonv dateString,sgv > ${dir}_${file}_csv/${dir}_${file}.csv
+        if cat ${dir}_${file} | jq -e .[0] > /dev/null; then
+          cat ${dir}_${file} | jsonv dateString,sgv > ${dir}_${file}_csv/${dir}_${file}.csv
+        else
+          echo "${dir}_${file} does not appear to be valid json"
+        fi
 
         #print the csv to confirm it was created
-        ls ${dir}_${file}.csv
+        ls ${dir}_${file}.csv || echo "${dir}_${file}.csv not found - continuing"
 
     done
 
@@ -55,13 +59,18 @@ ls -d [0-9]* | while read dir; do
   for type in profile treatments devicestatus; do
 
     cd $dir/direct-sharing-31/
-    ls ${type}_*.gz | sed "s/.gz//" | while read file; do
-        gzip -cd ${file} > ${dir}_${file}
+    ls ${type}*.json.gz | sed "s/.json.gz//" | while read file; do
+        gzip -cd ${file}.json.gz > ${dir}_${file}.json
         #gzip -cd $type.json.gz > ${dir}_$type.json
-        echo "Extracted ${dir}_${file}; splitting it..."
+        echo "Extracted ${dir}_${file}.json; splitting it..."
 
         #need to chunk-ify any large files
-        jsonsplit ${dir}_${file} 15000
+        if cat ${dir}_${file}.json | jq -e .[0] > /dev/null; then
+          jsonsplit ${dir}_${file}.json 15000
+        else
+          echo "${dir}_${file}.json does not appear to be valid json"
+          continue
+        fi
 
         #create a folder for the csv output to go into
         mkdir -p ${dir}_${file}_csv
@@ -71,7 +80,11 @@ ls -d [0-9]* | while read dir; do
         echo "Creating CSV files..."
         ls *.json | while read partsfile; do
             #read json file and convert to csv
-            complex-json2csv ${partsfile} > ../${dir}_${partsfile}_csv/${partsfile%.json}.csv
+            if cat ${partsfile} | jq -e .[0] > /dev/null; then
+              complex-json2csv ${partsfile} > ../${dir}_${file}_csv/${partsfile%.json}.csv
+            else
+              echo "${partsfile} does not appear to be valid json"
+            fi
             echo -n "=" > /dev/stderr
         done
         echo
@@ -79,11 +92,12 @@ ls -d [0-9]* | while read dir; do
         cd ../${dir}_${file}_csv/
         echo -n "Participant $dir: $file CSV files created:"
         ls *$file*.csv | wc -l
-
-        #(get out of csv and back to the rest of the data files)
-        cd ../../../
+        cd ../
 
     done # ls ${type}_*.gz | sed "s/.gz//" | while read file
+
+    #(get out of csv and back to the rest of the data files)
+    cd ../../
 
   done # for type in profile treatments devicestatus
 
