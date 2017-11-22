@@ -8,7 +8,7 @@ Tools to work with data downloaded from Open Humans research platform
 **NOTE/TO DO:** 
 This script was originally designed for the NS Uploader which only named files by type (e.g. entries.json). 
 A later version of the NS Uploader adds the time range (e.g. entries_2017-07-10_to_2017-11-08.json) to the file name. 
-The script needs to be updated to deal with the file name change. 
+The script needs to be updated to deal with the file name change (see https://github.com/danamlewis/OpenHumansDataTools/pull/4 for proposed update in the interim)
 In the meantime, you can manually pull out the files with date names and just run the script on the non-numbered files.)
 ```
 
