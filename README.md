@@ -58,7 +58,10 @@ Per the headers for the file provided as an example in this script, if needed, I
 
 Requires `csvkit`, so do `sudo pip install csvkit` to install before running this script. Also, it assumes your NS data files are already in csv format, using tool #1 [Unzip-Zip-CSVify-OpenHumans-data.sh](https://github.com/danamlewis/OpenHumansDataTools/blob/master/bin/unzip-split-csvify-OpenHumans-data.sh).
 
-This script, [devicestatus-pull-isf-timestamp.sh](https://github.com/danamlewis/OpenHumansDataTools/blob/master/bin/devicestatus-pull-isf-timestamp.sh) pulls ISF and timestamp for further ISF analysis. 
+*Note: depending on your install of `six`, you may get an attribute error. 
+Following [this rabbit hole about the error](https://github.com/wireservice/csvkit/issues/747), various combinations of solutions outlined in [this stack overflow article](https://stackoverflow.com/questions/29485741/unable-to-upgrade-python-six-package-in-mac-osx-10-10-2/29666702#29666702) may help.*
+
+The [devicestatus-pull-isf-timestamp.sh](https://github.com/danamlewis/OpenHumansDataTools/blob/master/bin/devicestatus-pull-isf-timestamp.sh) script, when successful, pulls ISF and timestamp to enable further ISF analysis. 
 
 Output file looks like this:
 ![Example of isf timestamp puller](https://github.com/danamlewis/OpenHumansDataTools/blob/master/Examples/Example_devicestatus_pull_ISF_timestamp.png)
