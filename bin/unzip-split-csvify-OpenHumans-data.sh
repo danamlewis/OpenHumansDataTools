@@ -33,7 +33,7 @@ ls -d [0-9]* | while read dir; do
 
         # pipe the json into csv, taking the dateString and sgv datums
         if cat ${dir}_${file} | jq -e .[0] > /dev/null; then
-          cat ${dir}_${file} | jsonv dateString,sgv > ${dir}_${file}_csv/${dir}_${file}.csv
+          cat ${dir}_${file} | jq '.[] | [.dateString, .sgv | tostring] | join (", ")' | tr -d '"' > ${dir}_${file}.csv
         else
           echo "${dir}_${file} does not appear to be valid json"
         fi
