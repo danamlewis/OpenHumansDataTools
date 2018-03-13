@@ -21,10 +21,10 @@ ls -d [0-9]* | while read dir; do
     ls -d *.csv | while read file; do
 
     #cut timestamp and isf values from the devicestatus files and save to a new csv file
-        echo "ISF,Timestamp" > ISF_analysis/${file%.csv}_isf.csv
+        echo "ISF, PID, Timestamp" > ISF_analysis/${file%.csv}_isf.csv
         paste -d, \
-          <(csvcut -c openaps/enacted/reason $file | awk -F "\"*, \"*" '{print $4}' | sed 's/.*://') \
-          <(csvcut -c openaps/enacted/timestamp $file | cut -d, -f1-) \
+          <(csvcut -c openaps/enacted/reason $file | awk -F "\"*, \"*" '{print $4}' | sed 's/.*://' | awk '{print $1,F}' FS=, OFS=, F="$dir" | sed 1d) \
+          <(csvcut -c openaps/enacted/timestamp $file | cut -d, -f1- | sed 1d) \
           >> ISF_analysis/${file%.csv}_isf.csv
         echo ${file%.csv}_isf.csv
     
