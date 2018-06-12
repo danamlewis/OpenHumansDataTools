@@ -10,9 +10,6 @@
 
 #run from the folder where your OH data is downloaded to
 
-# exit the script right away if something fails
-set -eu
-
 ls -d [0-9]* | while read dir; do
 
     # Print the directory/folder name you're investigating
@@ -20,9 +17,16 @@ ls -d [0-9]* | while read dir; do
 
     cd $dir/direct-sharing-31/
 
+    # if date run has a space in .gz file name, remove the space before processing
+    for f in *\ *; do mv "$f" "${f// /}"; done done &>/dev/null
+    
+    # exit the script right away if something fails
+    set -eu
+
     #unzip the relevant json file and re-name it with the directory name as a json
     type=entries
-    ls ${type}*.gz | sed "s/.gz//" | while read file; do
+    ls ${type}*.gz | sed "s/.gz//" | while read file; do    
+
         gzip -cd ${file} > ${dir}_${file}
         #gzip -cd entries.json.gz > ${dir}_entries.json
 
@@ -59,8 +63,8 @@ ls -d [0-9]* | while read dir; do
   for type in profile treatments devicestatus; do
 
     cd $dir/direct-sharing-31/
-    ls ${type}*.json.gz | sed "s/.json.gz//" | while read file; do
-        gzip -cd ${file}.json.gz > ${dir}_${file}.json
+    ls ${type}*.gz | sed "s/.gz//" | while read file; do
+        gzip -cd ${file}.gz > ${dir}_${file}.json
         #gzip -cd $type.json.gz > ${dir}_$type.json
         echo "Extracted ${dir}_${file}.json; splitting it..."
 
