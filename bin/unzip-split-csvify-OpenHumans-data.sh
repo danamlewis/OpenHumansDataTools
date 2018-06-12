@@ -63,7 +63,7 @@ ls -d [0-9]* | while read dir; do
   for type in profile treatments devicestatus; do
 
     cd $dir/direct-sharing-31/
-    ls ${type}*.gz | sed "s/.gz//" | while read file; do    
+    ls ${type}*.gz | sed "s/.gz//" | while read file; do
         gzip -cd ${file}.gz > ${dir}_${file}.json
         #gzip -cd $type.json.gz > ${dir}_$type.json
         echo "Extracted ${dir}_${file}.json; splitting it..."
