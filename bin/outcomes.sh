@@ -40,7 +40,6 @@ ls -d [0-9]* | while read dir; do
     done
     
     # calculate time in range only for days with devicestatus data
-    #rm -rf /tmp/${dir}/ 2>/dev/null
     
     mkdir -p /tmp/${dir}/
     
@@ -67,12 +66,9 @@ ls -d [0-9]* | while read dir; do
     
     cd /tmp/${dir}/
     
-    #python3  ~/analysis_tools/bin/timeSpent.py /tmp/${dir}/ 70 180 ~/analysis_tools/bin/data.xlsx | tee -a "$outputdir/outcomes.csv"
-    
     # this replaces timeSpent.py to calculate TIR etc.
     cat /tmp/${dir}_${type}.sorted.uniq | awk 'BEGIN{OFS=",";} {if ($2<70) low++; else if ($2>180) high++; else inrange++; count++; sum += $2} END {print low/count,low,inrange/count,inrange,high/count,high,sum/count}' | tee -a "$outputdir/outcomes.csv"
 
-    #rm -rf /tmp/${dir}/
     cd "$outputdir/"
 
     #echo | tee -a "$outputdir/outcomes.csv" 
