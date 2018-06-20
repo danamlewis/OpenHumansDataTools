@@ -18,7 +18,7 @@ ls -d [0-9]* | while read dir; do
     cd $dir/direct-sharing-31/
 
     # if date run has a space in .gz file name, remove the space before processing
-    for f in *\ *; do mv "$f" "${f// /}"; done done &>/dev/null
+    for f in *\ *; do mv "$f" "${f// /}"; done &>/dev/null
     
     # exit the script right away if something fails
     set -eu
