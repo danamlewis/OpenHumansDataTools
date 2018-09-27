@@ -6,7 +6,7 @@ Tools to work with data downloaded from Open Humans research platform.
 - [Tool #2: Unzip, merge, and create output file from multiple data files from an OH download](#tool-2-unzip--merge--and-create-output-file-from-multiple-data-files-from-an-oh-download)
 - [Tool #3: Examples and descriptions of the four data file types from Nightscout](#tool-3-examples-and-descriptions-of-the-four-data-file-types-from-nightscout)
 - [Tool #4: Pull ISF from device status](#tool-4-pull-isf-from-device-status)
-
+- [Tool #5: Assess amount of looping data](#Tool-5-assess-amount-of-looping-data)
 
 ## Tool #1: Unzip, split if needed based on size, and convert json to csv, and do it on a full batch of downloaded data from OH. 
 
@@ -71,3 +71,27 @@ The [devicestatus-pull-isf-timestamp.sh](https://github.com/danamlewis/OpenHuman
 
 Output file looks like this:
 ![Example of isf timestamp puller](https://github.com/danamlewis/OpenHumansDataTools/blob/master/Examples/Example_devicestatus_pull_ISF_timestamp.png)
+
+## Tool #5: Assess amount of looping data
+
+There are two methods for assessing amounts of data. 
+* You can use [howmuchBGdata.sh](https://github.com/danamlewis/OpenHumansDataTools/blob/master/bin/howmuchBGdata.sh) to see how much time worth of BG entries someone has. However, this doesn't necessarily represent time of looping data.
+* Or, you can use [howmuchdevicestatusdata.sh](https://github.com/danamlewis/OpenHumansDataTools/blob/master/bin/howmuchdevicestatusdata.sh) to see how much looping data (OpenAPS only for now; someone can add in Loop assessment later with same principle) someone has in the Data Commons.
+
+Before running `howmuchdevicestatusdata.sh`, you'll need to first run [devicestatustimestamp.sh](https://github.com/danamlewis/OpenHumansDataTools/blob/master/bin/devicestatustimestamp.sh) to pull out the timestamp into a separate file. If you haven't, you'll need `csvkit` (see Tool #4 for details). **Also, both of these may need `chmod +x <filename>` before running on your mahcine.**
+
+Output on the command line of `devicestatustimestamp.sh`:
+![Example from command line output of devicestatustimestamp.sh](https://github.com/danamlewis/OpenHumansDataTools/blob/master/Examples/Example_command_line_devicestatustimestamp.sh.png)
+
+Then, run `howmuchdevicestatusdata.sh`, and the output in the command line also shows which files are being processed:
+![Example from command line output of howmuchdevicestatusdata.sh](https://github.com/danamlewis/OpenHumansDataTools/blob/master/Examples/Example_command_line_howmuchdevicestatusdata.sh.png)
+
+The original output of `howmuchdevicestatusdata.sh` is a CSV. 
+* Due to someone having multiple uploads, there may be multiple lines for a single person. You can use Excel to de-duplicate these.
+* Loop users (until someone updates the script to pull in loop/enacted/timestamp) will show up as 0. You may want to remove these before averaging to estimate the Data Commons' total looping data.
+
+![Example CSV output of howmuchdevicestatusdata.sh](https://github.com/danamlewis/OpenHumansDataTools/blob/master/Examples/Example_CSVoutput_howmuchdevicestatusdata.sh.png)
+
+#### TODO for Tool 5: 
+1) add Loop/enacted/timestamp to also assess Loop users
+2) add a script version to include both BG and looping data in same output CSV)
