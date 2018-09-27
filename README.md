@@ -7,6 +7,7 @@ Tools to work with data downloaded from Open Humans research platform.
 - [Tool #3: Examples and descriptions of the four data file types from Nightscout](#tool-3-examples-and-descriptions-of-the-four-data-file-types-from-nightscout)
 - [Tool #4: Pull ISF from device status](#tool-4-pull-isf-from-device-status)
 - [Tool #5: Assess amount of looping data](#tool-5-assess-amount-of-looping-data)
+- [Tool #6: Outcomes](#tool-6-outcomes)
 
 ## Tool #1: Unzip, split if needed based on size, and convert json to csv, and do it on a full batch of downloaded data from OH. 
 
@@ -78,7 +79,7 @@ There are two methods for assessing amounts of data.
 * You can use [howmuchBGdata.sh](https://github.com/danamlewis/OpenHumansDataTools/blob/master/bin/howmuchBGdata.sh) to see how much time worth of BG entries someone has. However, this doesn't necessarily represent time of looping data.
 * Or, you can use [howmuchdevicestatusdata.sh](https://github.com/danamlewis/OpenHumansDataTools/blob/master/bin/howmuchdevicestatusdata.sh) to see how much looping data (OpenAPS only for now; someone can add in Loop assessment later with same principle) someone has in the Data Commons.
 
-Before running `howmuchdevicestatusdata.sh`, you'll need to first run [devicestatustimestamp.sh](https://github.com/danamlewis/OpenHumansDataTools/blob/master/bin/devicestatustimestamp.sh) to pull out the timestamp into a separate file. If you haven't, you'll need `csvkit` (see Tool #4 for details). **Also, both of these may need `chmod +x <filename>` before running on your mahcine.**
+Before running `howmuchdevicestatusdata.sh`, you'll need to first run [devicestatustimestamp.sh](https://github.com/danamlewis/OpenHumansDataTools/blob/master/bin/devicestatustimestamp.sh) to pull out the timestamp into a separate file. If you haven't, you'll need `csvkit` (see Tool #4 for details). **Also, both of these may need `chmod +x <filename>` before running on your machine.**
 
 Output on the command line of `devicestatustimestamp.sh`:
 ![Example from command line output of devicestatustimestamp.sh](https://github.com/danamlewis/OpenHumansDataTools/blob/master/Examples/Example_command_line_devicestatustimestamp.sh.png)
@@ -95,3 +96,9 @@ The original output of `howmuchdevicestatusdata.sh` is a CSV.
 #### TODO for Tool 5: 
 1) add Loop/enacted/timestamp to also assess Loop users
 2) add a script version to include both BG and looping data in same output CSV)
+
+## Tool #6: Outcomes
+
+This script ([outcomes.sh](https://github.com/danamlewis/OpenHumansDataTools/blob/master/bin/outcomes.sh)) assess the start/end of BG and looping data to calculate time spent low (default: <70 mg/dL), time in range (default: 70-180mg/dL), time spent high (default:>180mg/dL), amount of high readings, and the average glucose for the time frame where there is entries data and they are looping. 
+
+*Tl;dr - this analyzes the post-looping time frame.*
