@@ -1,4 +1,4 @@
-# Script howmuchdata.sh to pull the date ranges of OH data, output into CSV so you can analyze how much looping time someone has
+# Script howmuchdata.sh to pull the date ranges of OH data, output into CSV so you can analyze how much BG data someone has
 
 #!/bin/bash
 
