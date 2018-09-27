@@ -2,10 +2,10 @@
 
 Tools to work with data downloaded from Open Humans research platform.
 
-- [Tool #1: Unzip, split if needed based on size, and convert json to csv, and do it on a full batch of downloaded data from OH.](#tool--1--unzip--split-if-needed-based-on-size--and-convert-json-to-csv--and-do-it-on-a-full-batch-of-downloaded-data-from-oh)
-- [Tool #2: Unzip, merge, and create output file from multiple data files from an OH download](#tool--2--unzip--merge--and-create-output-file-from-multiple-data-files-from-an-oh-download)
-- [Tool #3: Examples and descriptions of the four data file types from Nightscout](#tool--3--examples-and-descriptions-of-the-four-data-file-types-from-nightscout)
-- [Tool #4: Pull ISF from device status](##tool--4--pull-isf-from-device-status)
+- [Tool #1: Unzip, split if needed based on size, and convert json to csv, and do it on a full batch of downloaded data from OH.](#tool-1-unzip-split-if-needed-based-on-size-and-convert-json-to-csv-and-do-it-on-a-full-batch-of-downloaded-data-from-oh)
+- [Tool #2: Unzip, merge, and create output file from multiple data files from an OH download](#tool-2-unzip--merge--and-create-output-file-from-multiple-data-files-from-an-oh-download)
+- [Tool #3: Examples and descriptions of the four data file types from Nightscout](#tool-3-examples-and-descriptions-of-the-four-data-file-types-from-nightscout)
+- [Tool #4: Pull ISF from device status](#tool-4-pull-isf-from-device-status)
 
 
 ## Tool #1: Unzip, split if needed based on size, and convert json to csv, and do it on a full batch of downloaded data from OH. 
