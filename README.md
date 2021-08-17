@@ -88,6 +88,8 @@ Project members who have used the AndroidAPS uploader will have a different seri
 
 **TemporaryBasals** - contains information about temporary basal rates that have been set. 
 
+**TempTargets** - contains information about temporary targets that have been set.
+
 **Treatments** - contains information about bolus calculations, boluses (manual or SMB), profile changes, etc. 
 
 ## Tool #6: Pull ISF from device status
