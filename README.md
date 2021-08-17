@@ -3,7 +3,7 @@
 Tools to work with data downloaded from Open Humans research platform.
 
 - [Tool #1: Unzip, split if needed based on size, and convert json to csv, and do it on a full batch of downloaded data from OH.](#tool-1-unzip-split-if-needed-based-on-size-and-convert-json-to-csv-and-do-it-on-a-full-batch-of-downloaded-data-from-oh)
-- [Tool #2: Unzip, convert json to csv, on data from OH from the AndroidAPS uploader type.])(#tool-2-Unzip-and-convert-json-to-csv-on-data-from-OH-from-the-AndroidAPS-uploader-type)
+- [Tool #2: Unzip, convert json to csv, on data from OH from the AndroidAPS uploader type.](#tool-2-Unzip-and-convert-json-to-csv-on-data-from-OH-from-the-AndroidAPS-uploader-type)
 - [Tool #3: Unzip, merge, and create output file from multiple data files from an OH download](#tool-3-unzip-merge-and-create-output-file-from-multiple-data-files-from-an-oh-download)
 - [Tool #4: Examples and descriptions of the four data file types from Nightscout uploader](#tool-4-examples-and-descriptions-of-the-four-data-file-types-from-nightscout)
 - [Tool #5: Examples and descriptions of data structures from AndroidAPS uploader](#tool-5-Examples-and-descriptions-of-data-structures-from-AndroidAPS-uploader)
