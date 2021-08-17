@@ -50,7 +50,7 @@ Participant ########: devicestatus CSV files created:      35
 
 ## Tool #2: Unzip and convert json to csv, on data from OH from the AndroidAPS uploader type
 
-This script checks for the existence of AndroidAPS uploader data (under direct-sharing396 folder, which is the Open Humans designation for this uploader project), unzips the files, puts the BG and timestamp in a simplified csv file (similar to "entries" from the Nightscout uploader type), and converts the remaining files into csv as well. Each .zip file remains, and a folder with the file name is created with all converted json and .csv folders below (see picture below for example). 
+[unzip-csvify-AAPS-OpenHumans-data.sh](unzip-csvify-AAPS-OpenHumans-data.sh) checks for the existence of AndroidAPS uploader data (under direct-sharing396 folder, which is the Open Humans designation for this uploader project), unzips the files, puts the BG and timestamp in a simplified csv file (similar to "entries" from the Nightscout uploader type), and converts the remaining files into csv as well. Each .zip file remains, and a folder with the file name is created with all converted json and .csv folders below (see picture below for example). 
 
 <img width="252" alt="image" src="https://user-images.githubusercontent.com/7468165/exampleAAPSconvertedtoCSV-data-example.png">
 
