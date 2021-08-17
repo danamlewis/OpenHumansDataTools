@@ -72,11 +72,15 @@ Per the headers for the file provided as an example in this script, if needed, I
 
 ## Tool #5: Examples and descriptions of data structures from AndroidAPS uploader
 
-Project members who have used the AndroidAPS uploader will have a different series of data files available, although similar data will exist.
+Project members who have used the AndroidAPS uploader will have a different series of data files available, although similar data will exist. Depending on what stage of use someone is at (e.g. in "open loop" or early objective stage vs. an advanced user), they may not have all of the files described below.
 
 **ApplicationInfo** - contains information about the version of AndroidAPS
 
+**APSData** - contains information about algorithm predictions, calculations, and decisions. This is similar to "devicestatus" from the Nightscout uploader.
+
 **BgReadings** - contains timestamps and BG value. This is similar to "entries" from the Nightscout uploader.
+
+**CarePortalEvents** - contains information the user or system has entered as a CarePortal event.
 
 **DeviceInfo** - contains information about the mobile device used
 
@@ -84,6 +88,9 @@ Project members who have used the AndroidAPS uploader will have a different seri
 
 **Preferences** - contains information about the preferences used within AndroidAPS. [See the AndroidAPS documentation on preferences](https://androidaps.readthedocs.io/en/latest/Configuration/Preferences.html) for more details about what each of those indicate and the available setting options.
 
+**TemporaryBasals** - contains information about temporary basal rates that have been set. 
+
+**Treatments** - contains information about bolus calculations, boluses (manual or SMB), profile changes, etc. 
 
 ## Tool #6: Pull ISF from device status
 
