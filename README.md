@@ -11,6 +11,7 @@ Tools to work with data downloaded from Open Humans research platform.
 - [Tool #7: Assess amount of looping data](#tool-7-assess-amount-of-looping-data)
 - [Tool #8: Outcomes](#tool-8-outcomes)
 - [Tool #9: Suite of glucose varability and demographics analysis scripts](#tool-9-gv-demographics-scripts)
+- [Tool #10: Suit of glucose variability analysis scripts for assessing before and after (something)](#tool-10-gv-analytics-for-pre-and-post-analysis)
 
 ## Tool `#1`: Unzip, split if needed based on size, and convert json to csv, and do it on a full batch of downloaded data from OH. 
 
@@ -138,3 +139,7 @@ This script ([outcomes.sh](https://github.com/danamlewis/OpenHumansDataTools/blo
 ## Tool `#9`: GV Demographics scripts
 
 [This folder](https://github.com/danamlewis/OpenHumansDataTools/blob/master/bin/GV-demographics-scripts/) contains a variety of notebooks and other scripts for analyzing glucose variability and performing analysis of demographics, such as within the OpenAPS Data Commons. Note: This folder contains a separate license from the rest of this repository (which is MIT license), please make note of the license that applies to all files within this folder. 
+
+## Tool `#10`: GV Analytics for Pre and Post Analysis
+
+[This folder](https://github.com/danamlewis/OpenHumansDataTools/tree/master/bin/GV-pre-post-analysis) contains multiple notebooks with scripts for analysing glucose variability for before/after a change, such as a new onset medication that someone wants to assess GV-related changes for following commencement. Note: This folder contains a separate license from the rest of this repository (which is MIT license), please make note of the license that applies to all files within this folder. 
