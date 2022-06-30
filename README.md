@@ -140,6 +140,8 @@ This script ([outcomes.sh](https://github.com/danamlewis/OpenHumansDataTools/blo
 
 [This folder](https://github.com/danamlewis/OpenHumansDataTools/blob/master/bin/GV-demographics-scripts/) contains a variety of notebooks and other scripts for analyzing glucose variability and performing analysis of demographics, such as within the OpenAPS Data Commons. Note: This folder contains a separate license from the rest of this repository (which is MIT license), please make note of the license that applies to all files within this folder. 
 
+These scripts were used within the paper, "Large-Scale Data Analysis for Glucose Variability Outcomes with Open-Source Automated Insulin Delivery Systems". [This paper is open access and can be read here](https://doi.org/10.3390/nu14091906). 
+
 ## Tool `#10`: GV Analytics for Pre and Post Analysis
 
 [This folder](https://github.com/danamlewis/OpenHumansDataTools/tree/master/bin/GV-pre-post-analysis) contains multiple notebooks with scripts for analysing glucose variability for before/after a change, such as a new onset medication that someone wants to assess GV-related changes for following commencement. Note: This folder contains a separate license from the rest of this repository (which is MIT license), please make note of the license that applies to all files within this folder. 
