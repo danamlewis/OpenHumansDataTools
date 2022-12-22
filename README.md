@@ -12,6 +12,7 @@ Tools to work with data downloaded from Open Humans research platform.
 - [Tool #8: Outcomes](#tool-8-outcomes)
 - [Tool #9: Suite of glucose varability and demographics analysis scripts](#tool-9-gv-demographics-scripts)
 - [Tool #10: Suit of glucose variability analysis scripts for assessing before and after (something)](#tool-10-gv-analytics-for-pre-and-post-analysis)
+- [Tool #11: Python Scripts for Checking Between Different Versions of the OpenAPS Data Commons Dataset ](#tool-11-python-scripts-for-checking-between-different-versions-of-the-openaps-data-commons-dataset)
 
 ## Tool `#1`: Unzip, split if needed based on size, and convert json to csv, and do it on a full batch of downloaded data from OH. 
 
@@ -145,3 +146,31 @@ These scripts were used within the paper, "Large-Scale Data Analysis for Glucose
 ## Tool `#10`: GV Analytics for Pre and Post Analysis
 
 [This folder](https://github.com/danamlewis/OpenHumansDataTools/tree/master/bin/GV-pre-post-analysis) contains multiple notebooks with scripts for analysing glucose variability for before/after a change, such as a new onset medication that someone wants to assess GV-related changes for following commencement. Note: This folder contains a separate license from the rest of this repository (which is MIT license), please make note of the license that applies to all files within this folder. 
+
+## Tool `#11`: Python Scripts for Checking Between Different Versions of the OpenAPS Data Commons Dataset
+
+There are two useful scripts that enable you to check between the latest version of the OpenAPS Data Commons dataset and the previous version you were working on. Running these two scripts allows you to generate a list of your current and/or the latest dataset and compare between them. This would then allow you to pull out only the files you didn't already have, saving you a lot of time by not downloading duplicate data that you may have already cleaned.
+
+### folder-contents.py
+
+The first, [folder-contents.py](https://github.com/danamlewis/OpenHumansDataTools/blob/master/bin/folder-contents.py), looks through a folder containing an existing version of the OpenAPS Data Commons (or any OH) dataset and outputs a CSV file with a list of the projectmemberID and any of the projectmemberID's file within the sub-folders of various direct-sharing uploaders. To run this script, `python ~/bin/folder-contents.py` from within the data folder (e.g. "OpenAPS Data Commons n=122"). 
+
+This is what the output CSV file will look like:
+
+![Example CSV output of folder-contents.py](https://github.com/danamlewis/OpenHumansDataTools/blob/master/Examples/Example-output-folder-contents-py-script.png)
+
+### match-file-names.py
+
+The second script, [match-file-names.py](https://github.com/danamlewis/OpenHumansDataTools/blob/master/bin/match-file-names.py), checks whether the list of projectmemberID and file name from the first file (typically using the previous script) matches any projectmemberID and file name found in the second file. It generates an output CSV (data-name-matches.csv) file that lists the projectmemberID, filename, and a column titled "Match?" which says "Yes" if they match and "No" if there is no match in the second file.
+
+The expected use of this script is to check a newer, bigger file as the first input file against the second input file. This will tell you whether the content exist (Yes) in the smaller, older file or not (No). This would aid you in determining which files to then pull from the newer, larger dataset to append to your cleaned, existing older/smaller dataset.
+
+To run this script:
+`python ~/bin/match-file/names.py Input-File-1-Larger-Newest.csv Input-File-2-Smaller-Older.csv`
+
+Note that it's looking for member_ID and data_file in input-file-1; and project_member_id, file_basename in input-file-2. If your input files are differently formatted, adjust accordingly.
+
+This is what the output CSV file looks like. I've also added conditional formatting after opening the CSV file to identify those files not found in the previous version of the dataset:
+
+![Example output of the match-file-names-py script](https://github.com/danamlewis/OpenHumansDataTools/blob/master/Examples/Example-output-match-file-names-py-script.png)
+
